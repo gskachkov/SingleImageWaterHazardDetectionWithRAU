@@ -303,7 +303,7 @@ def main(argv=None):
     	#train_imgs, gt_imgs = load_data(FLAGS.data_dir)
     	#gt_imgs = np.expand_dims(gt_imgs, axis=3)
 	print("Start Training...")
-	for itr in xrange(FLAGS.start_iter, MAX_ITERATION):
+	for itr in xrange(MAX_ITERATION):
             print('Setp: %d'%(itr))
 	    p1 = next_batch(1, itr)
             # print("p1:\n",p1)
