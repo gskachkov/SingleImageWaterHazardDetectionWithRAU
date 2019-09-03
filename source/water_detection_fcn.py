@@ -191,7 +191,7 @@ def inference(image, keep_prob):
 
 	W6 = utils.weight_variable([7, 7, pool5.shape[3].value, 4096], name="W6")
         b6 = utils.bias_variable([4096], name="b6")
-        conv6 = utils.conv2d_basic(pool5, W6, b6)
+        conv6 = utils.conv2d_basic(pool4, W6, b6)
         relu6 = tf.nn.relu(conv6, name="relu6")
 
         relu_dropout6 = tf.nn.dropout(relu6, keep_prob=keep_prob)
