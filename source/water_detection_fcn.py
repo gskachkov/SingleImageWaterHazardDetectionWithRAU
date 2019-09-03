@@ -13,7 +13,8 @@ import time
 
 FLAGS = tf.flags.FLAGS
 tf.flags.DEFINE_integer("batch_size", "1", "batch size for training")
-tf.flags.DEFINE_string("logs_dir", "models/", "path to logs directory")
+tf.flags.DEFINE_integer("start_iter", "0", "batch size for training")
+tf.flags.DEFINE_string("logs_dir", "/content/drive/My Drive/water/models", "path to logs directory")
 tf.flags.DEFINE_string("data_dir", "/home/Water_Detection", "path to dataset")
 tf.flags.DEFINE_string("output_dir", "results/", "path of output")
 tf.flags.DEFINE_float("learning_rate", "1e-6", "Learning rate for Adam Optimizer")
@@ -291,18 +292,18 @@ def main(argv=None):
 
     sess.run(tf.global_variables_initializer())
     ckpt = tf.train.get_checkpoint_state(FLAGS.logs_dir)
-    if ckpt and ckpt.model_checkpoint_path and FLAGS.mode=="visualize":
+    if ckpt and ckpt.model_checkpoint_path and (FLAGS.mode=="visualize" or FLAGS.mode == "train-continue"):
     	saver.restore(sess, ckpt.model_checkpoint_path)
     	print("Model restored...")
 
-    if FLAGS.mode == "train":
+    if FLAGS.mode == "train" or FLAGS.mode == "train-continue" :
     	print("Loading data")
 	global p;
         p = load_training_dataset_path()
     	#train_imgs, gt_imgs = load_data(FLAGS.data_dir)
     	#gt_imgs = np.expand_dims(gt_imgs, axis=3)
 	print("Start Training...")
-	for itr in xrange(MAX_ITERATION):
+	for itr in xrange(FLAGS.start_iter, MAX_ITERATION):
             print('Setp: %d'%(itr))
 	    p1 = next_batch(1, itr)
             # print("p1:\n",p1)
