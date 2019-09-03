@@ -305,7 +305,7 @@ def main(argv=None):
 	for itr in xrange(MAX_ITERATION):
             print('Setp: %d'%(itr))
 	    p1 = next_batch(1, itr)
-            print("p1:\n",p1)
+            # print("p1:\n",p1)
             x_train, y_train, y_train2 = load_data(p1, itr)
             y_train = np.expand_dims(y_train, axis=3)
 	    y_train2 = np.expand_dims(y_train2, axis=3)
@@ -323,10 +323,10 @@ def main(argv=None):
 	    #if itr % 100 == 0:
             #    summary = sess.run(merged, feed_dict = feed_dict)
             #    summary_writer.add_summary(summary, itr)
-	    if itr % 5000 == 0:
+	    if itr % 1000 == 0:
 		print('Save Net Model...')
 		saver.save(sess, FLAGS.logs_dir + "model.ckpt", itr)
-	    if itr % 5000 == 0 and itr >= 20000:
+	    if itr % 1000 == 0 and itr >= 20000:
 	    	FLAGS.learning_rate = FLAGS.learning_rate / 2
 
     elif FLAGS.mode == "visualize":
