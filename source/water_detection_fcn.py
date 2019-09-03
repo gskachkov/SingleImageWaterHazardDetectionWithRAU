@@ -28,7 +28,7 @@ IMAGE_SIZE_HEIGHT = 360
 IMAGE_SIZE_WIDTH = 640
 
 def load_training_dataset_path():
-    p = np.genfromtxt('../dataset/on_road_train.txt',dtype='str')
+    p = np.genfromtxt('../Dataset/on_road_train.txt',dtype='str')
     return p
 
 def load_data(p, step):
