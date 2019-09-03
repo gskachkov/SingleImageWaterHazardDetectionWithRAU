@@ -13,7 +13,7 @@ import time
 
 FLAGS = tf.flags.FLAGS
 tf.flags.DEFINE_integer("batch_size", "1", "batch size for training")
-tf.flags.DEFINE_integer("start_iter", "0", "batch size for training")
+tf.flags.DEFINE_integer("start_iter", "1", "batch size for training")
 tf.flags.DEFINE_string("logs_dir", "/content/drive/My Drive/water/models", "path to logs directory")
 tf.flags.DEFINE_string("data_dir", "/home/Water_Detection", "path to dataset")
 tf.flags.DEFINE_string("output_dir", "results/", "path of output")
